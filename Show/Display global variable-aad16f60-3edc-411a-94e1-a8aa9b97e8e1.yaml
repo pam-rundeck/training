@@ -1,0 +1,21 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  group: Show
+  id: aad16f60-3edc-411a-94e1-a8aa9b97e8e1
+  loglevel: INFO
+  name: Display global variable
+  nodeFilterEditable: false
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo ${globals.newname}
+    - description: Global Variable
+      script: echo @globals.newname@
+    keepgoing: false
+    strategy: node-first
+  uuid: aad16f60-3edc-411a-94e1-a8aa9b97e8e1
+
