@@ -1,0 +1,35 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: a727bc43-c0ea-42f4-8caf-23276b4af1f2
+  loglevel: INFO
+  name: Hello World Second Job - option
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-.*'
+  nodesSelectedByDefault: true
+  options:
+  - label: What do you want to say?
+    name: user_text
+    required: true
+    values:
+    - Bye
+    - Hello
+    valuesListDelimiter: ','
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo ${option.user_text} from ${node.hostname}
+    keepgoing: false
+    strategy: node-first
+  uuid: a727bc43-c0ea-42f4-8caf-23276b4af1f2
+

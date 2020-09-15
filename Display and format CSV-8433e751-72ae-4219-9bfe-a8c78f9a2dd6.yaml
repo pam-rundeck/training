@@ -1,0 +1,38 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 8433e751-72ae-4219-9bfe-a8c78f9a2dd6
+  loglevel: INFO
+  name: Display and format CSV
+  nodeFilterEditable: false
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - configuration:
+        authentication: None
+        checkResponseCode: 'false'
+        file: /var/lib/rundeck/${job.username}
+        method: GET
+        printResponse: 'false'
+        printResponseToFile: 'true'
+        proxySettings: 'false'
+        remoteUrl: https://knowledge.domo.com/@api/deki/files/6510/JEOPARDY_CSV.csv?revision=1
+        sslVerify: 'false'
+        timeout: '30000'
+      nodeStep: true
+      type: edu.ohio.ais.rundeck.HttpWorkflowNodeStepPlugin
+    - exec: cat /var/lib/rundeck/${job.username}
+      plugins:
+        LogFilter:
+        - config:
+            datatype: text/csv
+            sanitizeHtml: 'true'
+            striped: 'false'
+          type: render-datatype
+    keepgoing: false
+    strategy: node-first
+  uuid: 8433e751-72ae-4219-9bfe-a8c78f9a2dd6
+

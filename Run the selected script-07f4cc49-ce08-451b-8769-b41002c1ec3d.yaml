@@ -1,0 +1,24 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 07f4cc49-ce08-451b-8769-b41002c1ec3d
+  loglevel: INFO
+  name: Run the selected script
+  nodeFilterEditable: false
+  options:
+  - label: Select the file from the repo
+    name: scriptfile
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo ${globals.scriptpath}/${option.scriptfile}
+    - interpreterArgsQuoted: false
+      scriptInterpreter: python
+      scriptfile: ${globals.scriptpath}/${option.scriptfile}
+    keepgoing: false
+    strategy: node-first
+  uuid: 07f4cc49-ce08-451b-8769-b41002c1ec3d
+

@@ -1,0 +1,36 @@
+- defaultTab: output
+  description: ''
+  executionEnabled: true
+  id: 376d65ce-035f-4c60-b065-5cce1d7fc609
+  loglevel: INFO
+  name: 'Hello World Third Job - parallel '
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-.*'
+  nodesSelectedByDefault: true
+  options:
+  - label: What do you want to say?
+    name: user_text
+    required: true
+    values:
+    - Bye
+    - Hello
+    valuesListDelimiter: ','
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo ${option.user_text} step 1 on ${node.hostname}
+    - exec: echo ${option.user_text} step 2 on ${node.hostname}
+    keepgoing: false
+    strategy: parallel
+  uuid: 376d65ce-035f-4c60-b065-5cce1d7fc609
+

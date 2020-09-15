@@ -1,0 +1,35 @@
+- defaultTab: output
+  description: ''
+  executionEnabled: true
+  group: Script-management
+  id: c1e07bf5-4b00-464e-ba1f-664a96b59525
+  loglevel: INFO
+  name: List files and capture as variables
+  nodeFilterEditable: false
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - plugins:
+        LogFilter:
+        - config:
+            invalidKeyPattern: \s|\$|\{|\}|\\
+            logData: 'true'
+            regex: ^RUNDECK:DATA:\s*([^\s]+?)\s*=\s*(.+)$
+          type: key-value-data
+      script: |-
+        #!/usr/bin/env bash
+        scriptfiles=$(ls -p /var/lib/rundeck/repo/scripts | grep -v / | tr '\n' ' ')
+        declare -i count=0
+        for i in ${scriptfiles[@]}
+        do
+            count=$count+1
+            echo "RUNDECK:DATA:file_$count=$i"
+        done
+    - exec: echo "${data.result.0}"
+    keepgoing: false
+    strategy: node-first
+  uuid: c1e07bf5-4b00-464e-ba1f-664a96b59525
+

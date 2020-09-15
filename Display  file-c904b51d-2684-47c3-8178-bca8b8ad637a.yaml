@@ -1,0 +1,22 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: c904b51d-2684-47c3-8178-bca8b8ad637a
+  loglevel: INFO
+  name: Display  file
+  nodeFilterEditable: false
+  options:
+  - label: Select a file
+    name: file
+    type: file
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: cat ${file.file}
+    keepgoing: false
+    strategy: node-first
+  uuid: c904b51d-2684-47c3-8178-bca8b8ad637a
+

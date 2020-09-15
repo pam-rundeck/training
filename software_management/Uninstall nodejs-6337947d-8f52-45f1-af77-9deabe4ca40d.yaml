@@ -1,0 +1,28 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  group: software_management
+  id: 6337947d-8f52-45f1-af77-9deabe4ca40d
+  loglevel: INFO
+  name: Uninstall nodejs
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-.*'
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - script: sudo yum -y remove nodejs
+    keepgoing: false
+    strategy: node-first
+  uuid: 6337947d-8f52-45f1-af77-9deabe4ca40d
+

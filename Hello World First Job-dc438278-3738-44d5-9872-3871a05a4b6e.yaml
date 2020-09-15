@@ -1,0 +1,27 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: dc438278-3738-44d5-9872-3871a05a4b6e
+  loglevel: INFO
+  name: Hello World First Job
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-.*'
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo "hello world"
+    keepgoing: false
+    strategy: node-first
+  uuid: dc438278-3738-44d5-9872-3871a05a4b6e
+

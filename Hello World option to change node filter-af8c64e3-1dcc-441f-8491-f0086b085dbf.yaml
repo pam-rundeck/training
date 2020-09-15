@@ -1,0 +1,45 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: af8c64e3-1dcc-441f-8491-f0086b085dbf
+  loglevel: INFO
+  name: Hello World option to change node filter
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-${option.filter}'
+  nodesSelectedByDefault: true
+  options:
+  - name: filter
+    value: '1'
+    values:
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - .*
+    valuesListDelimiter: ','
+  - label: What do you want to say?
+    name: user_text
+    required: true
+    values:
+    - Bye
+    - Hello
+    valuesListDelimiter: ','
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: echo ${option.user_text} from ${node.hostname}
+    keepgoing: false
+    strategy: node-first
+  uuid: af8c64e3-1dcc-441f-8491-f0086b085dbf
+

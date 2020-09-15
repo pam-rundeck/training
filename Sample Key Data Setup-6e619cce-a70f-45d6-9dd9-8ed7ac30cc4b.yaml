@@ -1,0 +1,26 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 6e619cce-a70f-45d6-9dd9-8ed7ac30cc4b
+  loglevel: INFO
+  name: Sample Key Data Setup
+  nodeFilterEditable: false
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - exec: 'echo "RUNDECK:DATA: keyname = value"'
+      plugins:
+        LogFilter:
+        - config:
+            invalidKeyPattern: \s|\$|\{|\}|\\
+            logData: 'true'
+            regex: ^RUNDECK:DATA:\s*([^\s]+?)\s*=\s*(.+)$
+          type: key-value-data
+    - exec: echo ${data.keyname}
+    keepgoing: false
+    strategy: node-first
+  uuid: 6e619cce-a70f-45d6-9dd9-8ed7ac30cc4b
+
