@@ -1,0 +1,32 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  group: software_management
+  id: 71756544-1619-4cab-8b48-7429c20c2eba
+  loglevel: INFO
+  name: Intall nodejs
+  nodeFilterEditable: false
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name: AWS-Linux-Target-.*'
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  schedules: []
+  sequence:
+    commands:
+    - script: |-
+        curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+        sudo yum -y install nodejs
+        node --version
+        npm --version
+    keepgoing: false
+    strategy: node-first
+  uuid: 71756544-1619-4cab-8b48-7429c20c2eba
+
